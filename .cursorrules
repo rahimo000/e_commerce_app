@@ -13,6 +13,9 @@
 - Always refer to Scratchpad before planning the next step.
 
 ## Lessons
+- When implementing authentication, prefer bcryptjs over bcrypt for better portability and easier deployment across different environments
+- Always update both runtime dependencies and their corresponding type definitions (@types/*) when switching packages
+- When implementing role-based access control, extend NextAuth types to include custom fields like 'role'
 
 ## Scratchpad
 
@@ -40,6 +43,7 @@
   - [X] Set up next-auth@beta:
     - [X] Configure providers
     - [X] Set up authentication routes
+    - [X] Migrate from bcrypt to bcryptjs for better portability
   - [X] Install and configure Stripe:
     - [X] Set up API keys
     - [X] Configure webhooks
@@ -53,11 +57,22 @@
   - Order model
   - Review model
   - Cart model
-- [ ] Implement NextAuth.js authentication:
-  - Email/Password
-  - OAuth providers (Google, GitHub)
-  - JWT handling
-  - Protected routes
+  - Account model
+  - Session model
+  - Address model
+- [X] Seed sample data:
+  - Categories
+  - Products
+  - Users
+- [X] Implement NextAuth.js authentication:
+  - [X] Email/Password authentication with bcryptjs
+  - [X] OAuth providers (Google, GitHub)
+  - [X] JWT handling
+  - [X] Protected routes:
+    - [X] Implement middleware for route protection
+    - [X] Add role-based access control
+    - [X] Create auth utility functions
+    - [X] Update Prisma schema for user roles
 
 #### Phase 3: Core Features Implementation
 - [ ] Implement home layout and navigation
