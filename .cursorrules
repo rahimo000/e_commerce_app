@@ -75,13 +75,115 @@
     - [X] Update Prisma schema for user roles
 
 #### Phase 3: Core Features Implementation
-- [ ] Implement home layout and navigation
-- [ ] Create product listing and filtering
-- [ ] Implement product search functionality
-- [ ] Build product detail pages
-- [ ] Create shopping cart functionality
-- [ ] Implement checkout process with Stripe
-- [ ] Set up order management system
+- [ ] Implement home layout and navigation:
+  - [X] Create `(home)` folder inside app directory
+  - [X] Create responsive header with:
+    - [X] Logo and branding
+    - [X] Main navigation menu
+    - [X] Search bar
+    - [X] User menu dropdown
+    - [X] Shopping cart icon
+    - [X] Banner carousel
+    - [X] Latest products
+  - [X] Design footer with:
+    - [X] Company information
+    - [X] Quick links
+    - [X] Newsletter subscription
+    - [X] Social media links
+  - [X] Implement mobile navigation:
+    - [X] Hamburger menu
+    - [X] Mobile search
+    - [X] Responsive cart view
+
+- [ ] Create product listing and filtering:
+  - [ ] Implement product grid/list views:
+    - [ ] Grid view with product cards
+    - [ ] List view with detailed information
+    - [ ] Toggle between views
+  - [ ] Add filtering system:
+    - [ ] Category filters
+    - [ ] Price range filter
+    - [ ] Rating filter
+    - [ ] Availability filter
+  - [ ] Implement sorting options:
+    - [ ] Price (low to high/high to low)
+    - [ ] Newest first
+    - [ ] Best selling
+    - [ ] Most reviewed
+  - [ ] Add pagination
+
+- [ ] Implement product search functionality:
+  - [ ] Create search API endpoint
+  - [ ] Implement real-time search suggestions
+  - [ ] Add search filters:
+    - [ ] Category-specific search
+    - [ ] Price range
+    - [ ] Availability
+  - [ ] Implement search history
+  - [ ] Add search analytics
+
+- [ ] Build product detail pages:
+  - [ ] Create product information layout:
+    - [ ] Image gallery with zoom
+    - [ ] Product title and description
+    - [ ] Price and availability
+    - [ ] Size/variant selection
+    - [ ] Add to cart button
+  - [ ] Implement related products section
+  - [ ] Add product reviews and ratings:
+    - [ ] Review submission form
+    - [ ] Rating system
+    - [ ] Review moderation
+  - [ ] Create product sharing functionality
+
+- [ ] Create shopping cart functionality:
+  - [ ] Implement cart state management:
+    - [ ] Add to cart
+    - [ ] Remove from cart
+    - [ ] Update quantities
+    - [ ] Save cart to database
+  - [ ] Create cart page:
+    - [ ] Product list
+    - [ ] Quantity controls
+    - [ ] Price calculations
+    - [ ] Promo code input
+  - [ ] Add cart persistence:
+    - [ ] Local storage backup
+    - [ ] Sync with user account
+  - [ ] Implement cart notifications
+
+- [ ] Implement checkout process with Stripe:
+  - [ ] Create checkout flow:
+    - [ ] Address selection/input
+    - [ ] Shipping method selection
+    - [ ] Payment method selection
+    - [ ] Order review
+  - [ ] Integrate Stripe:
+    - [ ] Set up payment intents
+    - [ ] Handle payment processing
+    - [ ] Implement error handling
+  - [ ] Add order confirmation:
+    - [ ] Success page
+    - [ ] Email confirmation
+    - [ ] Order tracking number
+
+- [ ] Set up order management system:
+  - [ ] Create order tracking:
+    - [ ] Order status updates
+    - [ ] Shipping tracking
+    - [ ] Delivery notifications
+  - [ ] Implement order history:
+    - [ ] Order list view
+    - [ ] Order details page
+    - [ ] Reorder functionality
+  - [ ] Add order management features:
+    - [ ] Cancel order
+    - [ ] Return/refund process
+    - [ ] Order modification
+  - [ ] Set up order notifications:
+    - [ ] Status change emails
+    - [ ] Shipping updates
+    - [ ] Delivery confirmations
 
 #### Phase 4: Admin Dashboard
 - [ ] Create admin layout and navigation

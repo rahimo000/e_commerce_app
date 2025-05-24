@@ -1,6 +1,6 @@
-import { auth } from "@/auth"
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
+import { getToken } from "next-auth/jwt"
 
 // Add paths that should be protected
 const protectedPaths = [
@@ -19,7 +19,7 @@ const authPaths = [
 ]
 
 export async function middleware(request: NextRequest) {
-  const session = await auth()
+  const token = await getToken({ req: request })
   const { pathname } = request.nextUrl
 
   // Check if the path is protected
@@ -27,22 +27,30 @@ export async function middleware(request: NextRequest) {
   const isAuthPath = authPaths.some(path => pathname.startsWith(path))
 
   // Redirect authenticated users away from auth pages
-  if (isAuthPath && session) {
+  if (isAuthPath && token) {
     return NextResponse.redirect(new URL("/dashboard", request.url))
   }
 
   // Redirect unauthenticated users to login
-  if (isProtectedPath && !session) {
+  if (isProtectedPath && !token) {
     const callbackUrl = encodeURIComponent(pathname)
     return NextResponse.redirect(new URL(`/login?callbackUrl=${callbackUrl}`, request.url))
   }
 
   // Special handling for admin routes
-  if (pathname.startsWith("/admin") && session?.user?.role !== "ADMIN") {
+  if (pathname.startsWith("/admin") && token?.role !== "ADMIN") {
     return NextResponse.redirect(new URL("/", request.url))
   }
 
-  return NextResponse.next()
+  // Add the session to the response headers
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set("x-session", JSON.stringify(token))
+
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  })
 }
 
 // Configure which paths the middleware should run on
@@ -54,8 +62,7 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
-     * - public folder
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|public).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ],
 } 
