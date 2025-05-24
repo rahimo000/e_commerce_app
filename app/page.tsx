@@ -1,7 +1,7 @@
 import { BannerCarousel } from "@/components/banner-carousel"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { LatestProductsSection } from "./components/latest-products-section"
+import { LatestProductsSection } from "@/components/latest-products-section"
 import { Suspense } from "react"
 
 export default function HomePage() {
