@@ -58,8 +58,10 @@ export function BannerCarousel() {
                   src={banner.image}
                   alt={banner.title}
                   fill
+                  sizes="100vw"
                   className="object-cover"
-                  priority
+                  priority={banner.id === 1}
+                  loading={banner.id === 1 ? "eager" : "lazy"}
                 />
                 <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute inset-0 flex items-center justify-center">

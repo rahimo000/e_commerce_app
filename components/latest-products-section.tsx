@@ -1,9 +1,16 @@
 import { prisma } from "@/lib/prisma"
 import Image from "next/image"
 import Link from "next/link"
+import { Product } from "@prisma/client"
 import { formatPrice } from "@/lib/utils"
 
-async function getLatestProducts() {
+type ProductWithCategory = Product & {
+  category: {
+    name: string
+  }
+}
+
+async function getLatestProducts(): Promise<ProductWithCategory[]> {
   const products = await prisma.product.findMany({
     take: 4,
     orderBy: {
@@ -28,7 +35,7 @@ export async function LatestProductsSection() {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8">Latest Products</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
+          {products.map((product: ProductWithCategory) => (
             <Link
               key={product.id}
               href={`/products/${product.id}`}
