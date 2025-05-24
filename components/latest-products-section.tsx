@@ -1,14 +1,18 @@
 import { prisma } from "@/lib/prisma"
 import Image from "next/image"
 import Link from "next/link"
-import { Product } from "@prisma/client"
+import type { Prisma } from "@prisma/client"
 import { formatPrice } from "@/lib/utils"
 
-type ProductWithCategory = Product & {
-  category: {
-    name: string
+type ProductWithCategory = Prisma.ProductGetPayload<{
+  include: {
+    category: {
+      select: {
+        name: true
+      }
+    }
   }
-}
+}>
 
 async function getLatestProducts(): Promise<ProductWithCategory[]> {
   const products = await prisma.product.findMany({
