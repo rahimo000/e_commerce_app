@@ -1,11 +1,18 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Product, Category } from "@prisma/client"
 import { formatPrice } from "@/lib/utils"
 
 interface ProductCardProps {
-  product: Product & {
-    category: Category
+  product: {
+    id: string
+    name: string
+    description: string
+    price: number
+    images: string[]
+    category: {
+      id: string
+      name: string
+    }
   }
 }
 
