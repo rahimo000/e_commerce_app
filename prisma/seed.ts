@@ -79,7 +79,7 @@ async function main() {
 
   // Get category IDs by name
   const categoryMap = Object.fromEntries(
-    (await prisma.category.findMany()).map((cat) => [cat.name, cat.id])
+    (await prisma.category.findMany()).map((cat: { name: string; id: string }) => [cat.name, cat.id])
   );
 
   for (const product of products) {
